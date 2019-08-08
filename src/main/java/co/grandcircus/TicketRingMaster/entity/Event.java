@@ -46,4 +46,10 @@ public class Event {
 	public void setFavorite(Boolean favorite) {
 		this.favorite = favorite;
 	}
+	@Override
+	public String toString() {
+		return "Event [id=" + id + ", name=" + name + ", locate=" + locate + ", dates=" + dates + ", favorite="
+				+ favorite + "]";
+	}
+	
 }
