@@ -3,7 +3,7 @@ package co.grandcircus.TicketRingMaster;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -41,15 +41,19 @@ public class TicketRingMasterController {
 //		return list;
 //	}
 	
-	@GetMapping("/")
-	public ModelAndView listEvents(@RequestParam(value="keyword", required=false) String keyword) {
+	@RequestMapping("/")
+	public ModelAndView listEvents(@RequestParam(value="keyword", required=false) String keyword, @RequestParam(value="city", required=false) String city) {
 		ModelAndView mav = new ModelAndView("index");
-		if (keyword==null || keyword.isEmpty()) {
+		if (keyword==null || keyword.isEmpty() && (city == null || city.isEmpty())) {
 			List<SimpleEvent> list = apiService.getEvent("", "", "");
 			mav.addObject("list", list);
 			return mav;
-		} else {
+		} else if(city == null || city.isEmpty()){
 			List<SimpleEvent> list = apiService.getEvent(keyword, "", "");
+			mav.addObject("list", list);
+			return mav;
+		} else {
+			List<SimpleEvent> list = apiService.getEvent("", city, "");
 			mav.addObject("list", list);
 			return mav;
 		}
