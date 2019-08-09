@@ -1,17 +1,19 @@
 package co.grandcircus.TicketRingMaster.entity;
 
-import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class EmbeddedResponse {
 
-	private List<Event> events;
+	@JsonProperty("_embedded")
+	private  BigEmbedded embedded;
 	
-	public List<Event> getEvent() {
-		return events;
+	public BigEmbedded getBigEmbedded() {
+		return embedded;
 	}
 	
-	public void setEvent(List<Event> events) {
-		this.events = events;
+	public void setBigEmbedded(BigEmbedded embedded) {
+		this.embedded = embedded;
 	}
 	
 	}

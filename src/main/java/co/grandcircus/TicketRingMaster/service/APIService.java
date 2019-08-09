@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -33,20 +35,20 @@ private RestTemplate restTemplate = new RestTemplate();
 //		String url = "https://app.ticketmaster.com/discovery/v2/events?keyword=" + event + "&city=" + city + "&localstartDateTime=" + localstartDateTime + "&apiKey=" + API_KEY;
 		
 		String url = UriComponentsBuilder.fromHttpUrl("https://app.ticketmaster.com/discovery/v2/events")
+				.queryParam("apikey", API_KEY)
 				.queryParam("keyword", event)
 				.queryParam("city", city)
-				.queryParam("start", localstartDateTime)
-				.queryParam("apiKey", API_KEY)
+//				.queryParam("localStartDateTime", localstartDateTime)
+				
 				.toUriString();
 		
 		System.out.println(url);
 		EmbeddedResponse response = restTemplate.getForObject(url, EmbeddedResponse.class);
-		
-		List<Event> apiEvents = response.getEvent();
-		
+		List<Event> apiEvents = response.getBigEmbedded().getEvents();
+		System.out.println(apiEvents);
 		List<SimpleEvent> events = new ArrayList<>();
 		for (Event apiEvent : apiEvents) {
-			events.add(new SimpleEvent(event));
+			events.add(new SimpleEvent(apiEvent));
 		}
 		return events;
 		

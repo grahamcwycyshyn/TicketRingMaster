@@ -1,28 +1,22 @@
 package co.grandcircus.TicketRingMaster.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Entity
 public class Event {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long id;
 	private String name;
 	private String city;
 	private Dates dates;
 	private Boolean favorite;
+	@JsonProperty("_embedded")
 	private Embedded embedded;
 	
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+//	public Long getId() {
+//		return id;
+//	}
+//	public void setId(Long id) {
+//		this.id = id;
+//	}
 	public String getName() {
 		return name;
 	}
@@ -49,10 +43,17 @@ public class Event {
 		this.favorite = favorite;
 	}
 	
-	@Override
-	public String toString() {
-		return "Event [id=" + id + ", name=" + name + ", locate=" + city + ", dates=" + dates + ", favorite="
-				+ favorite + ", embedded=" + embedded + "]";
 	
+	public Embedded getEmbedded() {
+		return embedded;
 	}
+	public void setEmbedded(Embedded embedded) {
+		this.embedded = embedded;
+	}
+//	@Override
+//	public String toString() {
+//		return "Event [id=" + id + ", name=" + name + ", locate=" + city + ", dates=" + dates + ", favorite="
+//				+ favorite + ", embedded=" + embedded + "]";
+//	
+//	}
 }

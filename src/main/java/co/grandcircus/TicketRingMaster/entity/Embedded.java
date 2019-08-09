@@ -2,9 +2,7 @@ package co.grandcircus.TicketRingMaster.entity;
 
 import java.util.List;
 
-import javax.persistence.Entity;
 
-@Entity
 public class Embedded {
 	
 	private List<Venues> venues;

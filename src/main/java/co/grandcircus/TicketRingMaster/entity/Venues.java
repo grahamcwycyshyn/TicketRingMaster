@@ -1,8 +1,6 @@
 package co.grandcircus.TicketRingMaster.entity;
 
-import javax.persistence.Entity;
 
-@Entity
 public class Venues {
 	
 	private City city;
