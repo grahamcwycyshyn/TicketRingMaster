@@ -12,8 +12,8 @@ public class Event {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	private String locate;
-	private String dates;
+	private String city;
+	private Dates dates;
 	private Boolean favorite;
 	private Embedded embedded;
 	
@@ -29,16 +29,16 @@ public class Event {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getLocate() {
-		return locate;
+	public String getCity() {
+		return city;
 	}
-	public void setLocate(String locate) {
-		this.locate = locate;
+	public void setCity(String city) {
+		this.city = city;
 	}
-	public String getDates() {
+	public Dates getDates() {
 		return dates;
 	}
-	public void setDates(String dates) {
+	public void setDates(Dates dates) {
 		this.dates = dates;
 	}
 	
@@ -51,7 +51,7 @@ public class Event {
 	
 	@Override
 	public String toString() {
-		return "Event [id=" + id + ", name=" + name + ", locate=" + locate + ", dates=" + dates + ", favorite="
+		return "Event [id=" + id + ", name=" + name + ", locate=" + city + ", dates=" + dates + ", favorite="
 				+ favorite + ", embedded=" + embedded + "]";
 	
 	}

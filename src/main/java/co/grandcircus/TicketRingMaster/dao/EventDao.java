@@ -13,5 +13,5 @@ import co.grandcircus.TicketRingMaster.entity.Event;
 @Transactional
 public interface EventDao extends JpaRepository<Event, Long> {
 	List<Event> findByNameContainsIgnoreCase(String keyword);
-	
+	List<Event> findByCityContainsIgnoreCase(String city);
 }

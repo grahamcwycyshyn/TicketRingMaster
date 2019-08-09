@@ -8,18 +8,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import co.grandcircus.TicketRingMaster.dao.EventDao;
 import co.grandcircus.TicketRingMaster.entity.Event;
+import co.grandcircus.TicketRingMaster.service.APIService;
 
 public class TicketRingMasterController {
 
 	@Autowired
-	private EventDao dao; // TODO GET /events
+	private EventDao dao; 
+	
+	@Autowired
+	private APIService apiService;
+	
+	// TODO GET /events
+	// GET /events?city=
 	@GetMapping("/events")
 	public List<Event> listProducts(
-			@RequestParam(value = "keyword", required = false) String keyword) {
-		if (keyword==null || keyword.isEmpty()) {
+			@RequestParam(value = "keyword", required = false) String keyword, @RequestParam(value="city", required=false) String city) {
+		if (keyword==null || keyword.isEmpty() && city==null || city.isEmpty()) {
 		return dao.findAll();
-		} else {
+		} else if (city==null || city.isEmpty()) {
 			return dao.findByNameContainsIgnoreCase(keyword);
+		} else {
+			return dao.findByCityContainsIgnoreCase(city);
 		}
 	}
 }

@@ -1,5 +1,6 @@
 package co.grandcircus.TicketRingMaster.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -11,6 +12,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import co.grandcircus.TicketRingMaster.entity.EmbeddedResponse;
 import co.grandcircus.TicketRingMaster.entity.Event;
+import co.grandcircus.TicketRingMaster.entity.SimpleEvent;
 
 
 @Component
@@ -27,7 +29,7 @@ private RestTemplate restTemplate = new RestTemplate();
 	    restTemplate = new RestTemplateBuilder().additionalInterceptors(interceptor).build();
 	}
 	
-	public List<Event> getEvent(String event, String city, String localstartDateTime) {
+	public List<SimpleEvent> getEvent(String event, String city, String localstartDateTime) {
 //		String url = "https://app.ticketmaster.com/discovery/v2/events?keyword=" + event + "&city=" + city + "&localstartDateTime=" + localstartDateTime + "&apiKey=" + API_KEY;
 		
 		String url = UriComponentsBuilder.fromHttpUrl("https://app.ticketmaster.com/discovery/v2/events")
@@ -40,7 +42,14 @@ private RestTemplate restTemplate = new RestTemplate();
 		System.out.println(url);
 		EmbeddedResponse response = restTemplate.getForObject(url, EmbeddedResponse.class);
 		
-		return response.getEvent();
+		List<Event> apiEvents = response.getEvent();
+		
+		List<SimpleEvent> events = new ArrayList<>();
+		for (Event apiEvent : apiEvents) {
+			events.add(new SimpleEvent(event));
+		}
+		return events;
+		
 	}
 	
 //	public List<Venues> getVenues(){
