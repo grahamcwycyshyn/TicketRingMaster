@@ -1,22 +1,25 @@
 package co.grandcircus.TicketRingMaster.service;
 
+import java.util.List;
+
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import co.grandcircus.TicketRingMaster.entity.EmbeddedResponse;
+import co.grandcircus.TicketRingMaster.entity.Event;
 
 
 @Component
 public class APIService {
 	
+private String API_KEY = "G6Yuy7pZjAXxohAIGjvLGcfPwWVAjxmq";
 private RestTemplate restTemplate = new RestTemplate();
 	
-	// This is an instance initialization block. It runs when a new instance of the class is created--
-	// right before the constructor.
 	{
-	    // This configures the restTemplateWithUserAgent to include a User-Agent header with every HTTP
-		// request. Some of the APIs in this demo have a bug where User-Agent is required.
 		ClientHttpRequestInterceptor interceptor = (request, body, execution) -> {
 	        request.getHeaders().add(HttpHeaders.USER_AGENT, "Spring");
 	        return execution.execute(request, body);
@@ -24,7 +27,23 @@ private RestTemplate restTemplate = new RestTemplate();
 	    restTemplate = new RestTemplateBuilder().additionalInterceptors(interceptor).build();
 	}
 	
-//	public List<Inventor> getNerds(){
+	public List<Event> getEvent(String event, String city, String localstartDateTime) {
+//		String url = "https://app.ticketmaster.com/discovery/v2/events?keyword=" + event + "&city=" + city + "&localstartDateTime=" + localstartDateTime + "&apiKey=" + API_KEY;
+		
+		String url = UriComponentsBuilder.fromHttpUrl("https://app.ticketmaster.com/discovery/v2/events")
+				.queryParam("keyword", event)
+				.queryParam("city", city)
+				.queryParam("start", localstartDateTime)
+				.queryParam("apiKey", API_KEY)
+				.toUriString();
+		
+		System.out.println(url);
+		EmbeddedResponse response = restTemplate.getForObject(url, EmbeddedResponse.class);
+		
+		return response.getEvent();
+	}
+	
+//	public List<Venues> getVenues(){
 //		
 //		String url = "https://dwolverton.github.io/fe-demo/data/computer-science-hall-of-fame.json";
 //		

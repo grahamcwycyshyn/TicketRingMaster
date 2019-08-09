@@ -15,6 +15,7 @@ public class Event {
 	private String locate;
 	private String dates;
 	private Boolean favorite;
+	private Embedded embedded;
 	
 	public Long getId() {
 		return id;
@@ -40,16 +41,18 @@ public class Event {
 	public void setDates(String dates) {
 		this.dates = dates;
 	}
+	
 	public Boolean getFavorite() {
 		return favorite;
 	}
 	public void setFavorite(Boolean favorite) {
 		this.favorite = favorite;
 	}
+	
 	@Override
 	public String toString() {
 		return "Event [id=" + id + ", name=" + name + ", locate=" + locate + ", dates=" + dates + ", favorite="
-				+ favorite + "]";
-	}
+				+ favorite + ", embedded=" + embedded + "]";
 	
+	}
 }
