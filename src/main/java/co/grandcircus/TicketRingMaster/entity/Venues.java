@@ -5,31 +5,31 @@ import javax.persistence.Entity;
 @Entity
 public class Venues {
 	
-	private String city;
-	private String state;
-	private String address;
+	private City city;
+	private State state;
+	private Address address;
 	
-	public String getCity() {
+	public City getCity() {
 		return city;
 	}
 	
-	public void setCity(String city) {
+	public void setCity(City city) {
 		this.city = city;
 	}
 	
-	public String getState() {
+	public State getState() {
 		return state;
 	}
 	
-	public void setState(String state) {
+	public void setState(State state) {
 		this.state = state;
 	}
 	
-	public String getAddress() {
+	public Address getAddress() {
 		return address;
 	}
 	
-	public void setAddress(String address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 	
