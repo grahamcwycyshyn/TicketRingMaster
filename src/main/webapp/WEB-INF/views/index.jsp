@@ -24,10 +24,17 @@
 				<input type="text" name="keyword">
 				<button type="submit">Submit</button>
 			</p>
-			<p>Search by City:
-				<input type="text" name="city">
-				<button type="submit" 
+			<p>Search by City
+				<table>
 			
+	<select name = "cities">
+	<c:forEach var="cities" items="${list.city}">
+	<option value="${list.city}">${list.city}</option>
+	</c:forEach>
+	</select>
+	<p><br/ ><button type="submit">Search</button></p>
+	</form>
+	
 
 		<h1>Events</h1>
 		<table class="table">
