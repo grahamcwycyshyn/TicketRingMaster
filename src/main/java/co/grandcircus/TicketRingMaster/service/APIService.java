@@ -37,7 +37,7 @@ private RestTemplate restTemplate = new RestTemplate();
 		String url = UriComponentsBuilder.fromHttpUrl("https://app.ticketmaster.com/discovery/v2/events")
 				.queryParam("apikey", API_KEY)
 				.queryParam("keyword", event)
-				.queryParam("city", city)
+//				.queryParam("city", city)
 //				.queryParam("localStartDateTime", localstartDateTime)
 				
 				.toUriString();
@@ -45,7 +45,7 @@ private RestTemplate restTemplate = new RestTemplate();
 		System.out.println(url);
 		EmbeddedResponse response = restTemplate.getForObject(url, EmbeddedResponse.class);
 		List<Event> apiEvents = response.getBigEmbedded().getEvents();
-		System.out.println(apiEvents);
+		System.out.println(apiEvents.get(0).getName());
 		List<SimpleEvent> events = new ArrayList<>();
 		for (Event apiEvent : apiEvents) {
 			events.add(new SimpleEvent(apiEvent));

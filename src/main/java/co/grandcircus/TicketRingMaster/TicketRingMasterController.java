@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import co.grandcircus.TicketRingMaster.entity.SimpleEvent;
 import co.grandcircus.TicketRingMaster.service.APIService;
@@ -32,10 +34,24 @@ public class TicketRingMasterController {
 //		}
 //	}
 	
-	@GetMapping("/test")
-	public List<SimpleEvent> test() {
-		List<SimpleEvent> list =  apiService.getEvent("longhorns", "houston", "localstartDateTime");
-		System.out.println(list);
-		return list;
+//	@GetMapping("/test")
+//	public List<SimpleEvent> test() {
+//		List<SimpleEvent> list =  apiService.getEvent("name", "city", "localstartDateTime");
+//		System.out.println(list.get(0).getName());
+//		return list;
+//	}
+	
+	@GetMapping("/")
+	public ModelAndView listEvents(@RequestParam(value="keyword", required=false) String keyword) {
+		ModelAndView mav = new ModelAndView("index");
+		if (keyword==null || keyword.isEmpty()) {
+			List<SimpleEvent> list = apiService.getEvent("", "", "");
+			mav.addObject("list", list);
+			return mav;
+		} else {
+			List<SimpleEvent> list = apiService.getEvent(keyword, "", "");
+			mav.addObject("list", list);
+			return mav;
+		}
 	}
 }
