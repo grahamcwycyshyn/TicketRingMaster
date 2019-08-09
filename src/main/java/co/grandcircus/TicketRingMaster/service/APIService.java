@@ -37,8 +37,8 @@ private RestTemplate restTemplate = new RestTemplate();
 		String url = UriComponentsBuilder.fromHttpUrl("https://app.ticketmaster.com/discovery/v2/events")
 				.queryParam("apikey", API_KEY)
 				.queryParam("keyword", event)
-//				.queryParam("city", city)
-//				.queryParam("localStartDateTime", localstartDateTime)
+				.queryParam("city", city)
+				.queryParam("localStartDateTime", localstartDateTime)
 				
 				.toUriString();
 		

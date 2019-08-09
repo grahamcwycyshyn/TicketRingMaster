@@ -26,14 +26,17 @@
 			</p>
 			<p>Search by City:
 				<input type="text" name="city">
-				<button type="submit" 
-			
-
+				<button type="submit">Submit</button> 
+			</p>
+			<p>Search by Date:
+				<input type="text" name="date">
+				<button type="submit">Submit</button>
+			</p>
 		<h1>Events</h1>
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Product</th>
+					<th>Event</th>
 					<th>City</th>
 					<th>Date</th>
 				</tr>
