@@ -31,14 +31,14 @@ private RestTemplate restTemplate = new RestTemplate();
 	    restTemplate = new RestTemplateBuilder().additionalInterceptors(interceptor).build();
 	}
 	
-	public List<SimpleEvent> getEvent(String event, String city, String localstartDateTime) {
+	public List<SimpleEvent> getEvent(String event, String city, String date) {
 //		String url = "https://app.ticketmaster.com/discovery/v2/events?keyword=" + event + "&city=" + city + "&localstartDateTime=" + localstartDateTime + "&apiKey=" + API_KEY;
 		
 		String url = UriComponentsBuilder.fromHttpUrl("https://app.ticketmaster.com/discovery/v2/events")
 				.queryParam("apikey", API_KEY)
 				.queryParam("keyword", event)
 				.queryParam("city", city)
-				.queryParam("localStartDateTime", localstartDateTime)
+				.queryParam("startDateTime", date)
 				
 				.toUriString();
 		
