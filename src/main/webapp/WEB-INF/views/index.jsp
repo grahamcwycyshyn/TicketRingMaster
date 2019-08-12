@@ -24,23 +24,19 @@
 				<input type="text" name="keyword">
 				<button type="submit">Submit</button>
 			</p>
-			<p>Search by City
-				<table>
-			
-	<select name = "cities">
-	<c:forEach var="cities" items="${list.city}">
-	<option value="${list.city}">${list.city}</option>
-	</c:forEach>
-	</select>
-	<p><br/ ><button type="submit">Search</button></p>
-	</form>
-	
-
+			<p>Search by City:
+				<input type="text" name="city">
+				<button type="submit">Submit</button> 
+			</p>
+			<p>Search by Date:
+				<input type="date" id="date" name="date">
+				<button type="submit">Submit</button>
+			</p>
 		<h1>Events</h1>
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Product</th>
+					<th>Event</th>
 					<th>City</th>
 					<th>Date</th>
 				</tr>
@@ -51,17 +47,11 @@
 						<td>${event.name}</td>
 						<td>${event.city}</td>
 						<td>${event.date}</td>
+						<td><input type="button" value="Add to favorites"></td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-
-		<a href="/register" class="btn btn-secondary">Register</a> <a
-			href="/login" class="btn btn-secondary">Login</a> <a href="/logout"
-			class="btn btn-secondary">Logout</a> <a href="/admin"
-			class="btn btn-secondary">Admin</a>
-
-	
 	</form>
 	</div>
 </body>

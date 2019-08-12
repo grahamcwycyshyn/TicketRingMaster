@@ -42,21 +42,28 @@ public class TicketRingMasterController {
 //	}
 	
 	@RequestMapping("/")
-	public ModelAndView listEvents(@RequestParam(value="keyword", required=false) String keyword, @RequestParam(value="city", required=false) String city) {
+	public ModelAndView listEvents(@RequestParam(value="keyword", required=false) String keyword, @RequestParam(value="city", required=false) String city, @RequestParam(value="startDateTime", required=false) String date) {
 		ModelAndView mav = new ModelAndView("index");
-		if (keyword==null || keyword.isEmpty() && (city == null || city.isEmpty())) {
-			List<SimpleEvent> list = apiService.getEvent("", "", "");
-			mav.addObject("list", list);
-			return mav;
-		} else if(city == null || city.isEmpty()){
-			List<SimpleEvent> list = apiService.getEvent(keyword, "", "");
-			mav.addObject("list", list);
-			return mav;
-		} else {
-			List<SimpleEvent> list = apiService.getEvent("", city, "");
-			mav.addObject("list", list);
-			return mav;
-		}
+		List<SimpleEvent> list = apiService.getEvent(keyword, city, date);
+		mav.addObject("list", list);
+		return mav;
+//		if (keyword==null || keyword.isEmpty() && (city == null || city.isEmpty()) && (date == null || date.isEmpty())) {
+//			List<SimpleEvent> list = apiService.getEvent("", "", "");
+//			mav.addObject("list", list);
+//			return mav;
+//		} else if(city == null || city.isEmpty()&& (date == null || date.isEmpty())){
+//			List<SimpleEvent> list = apiService.getEvent(keyword, "", "");
+//			mav.addObject("list", list);
+//			return mav;
+//		} else if(date == null || date.isEmpty())	{
+//			List<SimpleEvent> list = apiService.getEvent("", city, "");
+//			mav.addObject("list", list);
+//			return mav;
+//		} else {
+//			List<SimpleEvent> list = apiService.getEvent("", "", date);
+//			mav.addObject("list", list);
+//			return mav;
+//		}
 	}
 	
 	
