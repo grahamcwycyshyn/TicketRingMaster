@@ -53,7 +53,7 @@ private RestTemplate restTemplate = new RestTemplate();
 		System.out.println(url);
 		EmbeddedResponse response = restTemplate.getForObject(url, EmbeddedResponse.class);
 		List<Event> apiEvents = response.getBigEmbedded().getEvents();
-		System.out.println(apiEvents.get(0).getName());
+		System.out.println(apiEvents.get(0).getUrl());
 		List<SimpleEvent> events = new ArrayList<>();
 		for (Event apiEvent : apiEvents) {
 			events.add(new SimpleEvent(apiEvent));

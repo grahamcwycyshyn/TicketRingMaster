@@ -22,16 +22,14 @@
 			<form action="/" method="get">
 			<p>Search by Keyword: 
 				<input type="text" name="keyword">
-				<button type="submit">Submit</button>
 			</p>
 			<p>Search by City:
 				<input type="text" name="city">
-				<button type="submit">Submit</button> 
 			</p>
 			<p>Search by Date:
 				<input type="date" id="date" name="startDateTime">
-				<button type="submit">Submit</button>
 			</p>
+			<button type="submit">Submit</button>
 		<h1>Events</h1>
 		<table class="table">
 			<thead>
@@ -44,7 +42,9 @@
 			<tbody>
 				<c:forEach var="event" items="${list}">
 					<tr>
-						<td><a href="${event.url}">${event.name}</a></td>
+						
+						<td><a href="${event.url}" target="_blank">${event.name}</a></td>
+						
 						<td>${event.city}</td>
 						<td>${event.date}</td>
 						<td><input type="button" value="Add to favorites"></td>

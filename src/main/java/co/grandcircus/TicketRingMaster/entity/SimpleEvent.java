@@ -22,6 +22,7 @@ public class SimpleEvent {
 		name = apiEvent.getName();
 		city = apiEvent.getEmbedded().getVenues().get(0).getCity().getName();
 		date = apiEvent.getDates().getStart().getLocalDate();
+		url = apiEvent.getUrl();
 	}
 
 	
