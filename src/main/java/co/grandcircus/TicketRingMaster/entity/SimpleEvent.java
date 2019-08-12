@@ -14,6 +14,7 @@ public class SimpleEvent {
 	String name;
 	String city;
 	String date;
+	String url;
 	
 	public SimpleEvent() {}
 	
@@ -21,6 +22,15 @@ public class SimpleEvent {
 		name = apiEvent.getName();
 		city = apiEvent.getEmbedded().getVenues().get(0).getCity().getName();
 		date = apiEvent.getDates().getStart().getLocalDate();
+	}
+
+	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	public Long getId() {

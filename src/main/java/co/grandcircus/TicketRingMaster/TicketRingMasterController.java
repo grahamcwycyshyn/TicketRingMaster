@@ -44,12 +44,14 @@ public class TicketRingMasterController {
 	@RequestMapping("/")
 	public ModelAndView listEvents(@RequestParam(value="keyword", required=false) String keyword, @RequestParam(value="city", required=false) String city, @RequestParam(value="startDateTime", required=false) String date) {
 		ModelAndView mav = new ModelAndView("index");
+		if(city != null) {
 		for(int i = 0; i < city.length(); i++) {
 			if(city.charAt(i) == ' ') {
 				String[] arr  = city.split(" ");
 				city = arr[0] + "+" + arr[1];
 				break;
 			}
+		}
 		}
 		
 		List<SimpleEvent> list = apiService.getEvent(keyword, city, date);

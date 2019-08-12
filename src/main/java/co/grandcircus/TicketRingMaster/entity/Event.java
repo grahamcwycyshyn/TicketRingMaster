@@ -10,6 +10,7 @@ public class Event {
 	private Boolean favorite;
 	@JsonProperty("_embedded")
 	private Embedded embedded;
+	private String url;
 	
 //	public Long getId() {
 //		return id;
@@ -17,8 +18,16 @@ public class Event {
 //	public void setId(Long id) {
 //		this.id = id;
 //	}
+	
+	
 	public String getName() {
 		return name;
+	}
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
 	}
 	public void setName(String name) {
 		this.name = name;

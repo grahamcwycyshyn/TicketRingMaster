@@ -44,7 +44,7 @@
 			<tbody>
 				<c:forEach var="event" items="${list}">
 					<tr>
-						<td>${event.name}</td>
+						<td><a href="${event.url}">${event.name}</a></td>
 						<td>${event.city}</td>
 						<td>${event.date}</td>
 						<td><input type="button" value="Add to favorites"></td>
