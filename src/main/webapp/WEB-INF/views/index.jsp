@@ -25,7 +25,6 @@
 			</span>
 			<span>Search by City:
 				<input type="text" name="city">
-				()
 			<span>Search by Date:
 				<input type="date" id="date" name="startDateTime">
 				<p>
