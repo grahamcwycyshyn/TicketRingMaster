@@ -29,7 +29,7 @@
 				<button type="submit">Submit</button> 
 			</p>
 			<p>Search by Date:
-				<input type="date" id="date" name="date">
+				<input type="date" id="date" name="startDateTime">
 				<button type="submit">Submit</button>
 			</p>
 		<h1>Events</h1>
