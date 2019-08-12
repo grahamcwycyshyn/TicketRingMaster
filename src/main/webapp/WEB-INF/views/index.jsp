@@ -47,7 +47,6 @@
 						
 						<td>${event.city}</td>
 						<td>${event.date}</td>
-						<td><input type="button" value="Add to favorites"></td>
 					</tr>
 				</c:forEach>
 			</tbody>
