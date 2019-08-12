@@ -20,16 +20,17 @@
 
 	<div class="container">
 			<form action="/" method="get">
-			<p>Search by Keyword: 
+			<span>Search by Keyword: 
 				<input type="text" name="keyword">
-			</p>
-			<p>Search by City:
+			</span>
+			<span>Search by City:
 				<input type="text" name="city">
-			</p>
-			<p>Search by Date:
+				()
+			<span>Search by Date:
 				<input type="date" id="date" name="startDateTime">
-			</p>
+				<p>
 			<button type="submit">Submit</button>
+			</p>
 		<h1>Events</h1>
 		<table class="table">
 			<thead>
